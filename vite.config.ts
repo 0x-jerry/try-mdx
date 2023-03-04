@@ -1,5 +1,5 @@
 import path from 'path'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import imports from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
@@ -7,9 +7,9 @@ import layouts from 'vite-plugin-vue-layouts'
 import pages from 'vite-plugin-pages'
 import icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
-import mdx from '@mdx-js/rollup'
 import jsx from '@vitejs/plugin-vue-jsx'
 import uno from 'unocss/vite'
+import { mdx } from './vite/mdx'
 
 export default defineConfig(() => {
   return {
@@ -51,7 +51,7 @@ export default defineConfig(() => {
 
       uno(),
 
-      mdx({ jsx: true }),
+      mdx(),
 
       jsx({
         include: ['**/*.tsx', '**/*.jsx', '**/*.mdx'],
