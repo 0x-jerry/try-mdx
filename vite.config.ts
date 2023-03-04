@@ -46,6 +46,7 @@ export default defineConfig(() => {
       // https://github.com/hannoeru/vite-plugin-pages
       pages({
         exclude: ['**/components/*.vue', '**/*.ts'],
+        extensions: ['vue', 'mdx'],
       }),
 
       uno(),

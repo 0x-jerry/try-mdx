@@ -1,8 +1,8 @@
-//  windicss
-import 'uno.css'
-
 import App from './App.vue'
 import { createApp, Plugin } from 'vue'
+
+import 'normalize.css'
+import 'uno.css'
 
 const app = createApp(App)
 
