@@ -1,4 +1,4 @@
-import { createStore } from '~/lib/store'
+import { createStore } from '@/lib/store'
 
 export const pageStore = createStore(
   () => {

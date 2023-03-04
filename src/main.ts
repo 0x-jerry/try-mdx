@@ -1,13 +1,13 @@
 //  windicss
-import 'virtual:windi.css'
+import 'uno.css'
 
 import App from './App.vue'
-import { createApp } from 'vue'
+import { createApp, Plugin } from 'vue'
 
 const app = createApp(App)
 
 // install all modules
-Object.values(import.meta.globEager('./modules/*.ts')).forEach((m) => {
+Object.values(import.meta.glob<Plugin>('./modules/*.ts', { eager: true })).forEach((m) => {
   m.install?.(app)
 })
 
