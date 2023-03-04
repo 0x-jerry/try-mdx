@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "vue": "^3.2.36",
+    "vue-router": "^4.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.38",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/test-utils": "^2.0.0",
+    "happy-dom": "^5.0.0",
+    "unplugin-auto-import": "^0.8.6",
+    "unplugin-icons": "^0.14.3",
+    "unplugin-vue-components": "^0.19.6",
+    "vite": "^2.9.9",
+    "vite-plugin-pages": "^0.23.0",
+    "vite-plugin-vue-layouts": "^0.6.0",
+    "vite-plugin-windicss": "^1.8.4",
+    "vitest": "^0.13.1"
+  }
+}
