@@ -9,6 +9,7 @@ import icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import jsx from '@vitejs/plugin-vue-jsx'
 import uno from 'unocss/vite'
+import i18n from '@intlify/unplugin-vue-i18n/vite'
 import { mdx } from './vite/mdx'
 
 export default defineConfig(() => {
@@ -55,6 +56,10 @@ export default defineConfig(() => {
 
       jsx({
         include: ['**/*.tsx', '**/*.jsx', '**/*.mdx'],
+      }),
+
+      i18n({
+        include: ['src/locales/*.yml'],
       }),
     ],
   }

@@ -4,6 +4,21 @@
 
 <style lang="less">
 html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* 霞鹜文楷 */
+body {
+  font-family: LXGWWenKai, sans-serif;
+}
+
+/* 霞鹜文楷 Mono */
+pre,
+code {
+  font-family: LXGWWenKaiMono, monospace;
+}
+
+.markdown-body {
+  font-family: LXGWWenKai, sans-serif;
 }
 </style>

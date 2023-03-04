@@ -1,0 +1,40 @@
+<script lang="ts" setup>
+import { site } from '@/configs'
+
+const { sidebar, user } = site
+</script>
+
+<template>
+  <div class="flex flex-col gap-16px pt-24px">
+    <VLink to="/" class="flex justify-center">
+      <div class="rounded-full overflow-hidden h-200px">
+        <img
+          class="transition duration-1000 rotate-0 hover:rotate-360 w-full h-full object-cover aspect-1/1"
+          :src="user.avatar"
+        />
+      </div>
+    </VLink>
+
+    <div class="text-(xl center) whitespace-nowrap flex-1 md:flex-none lg:(text-3xl)">
+      {{ user.nick }}
+    </div>
+
+    <div class="text-center text-(sm gray-5)" v-html="user.motto"></div>
+
+    <div class="flex justify-center">
+      <a v-for="item in sidebar.links" :href="item.href" target="_blank" :title="item.title">
+        <component :is="item.icon"></component>
+      </a>
+    </div>
+    <div class="flex flex-col gap-16px">
+      <VLink class="block decoration-none" v-for="item in sidebar.menus" :to="item.href">
+        <VButton class="w-full" :title="item.title">
+          <component :is="item.icon"></component>
+          <span class="flex-1 text-center">{{ item.title }}</span>
+        </VButton>
+      </VLink>
+    </div>
+  </div>
+</template>
+
+<style lang="less"></style>
