@@ -76,8 +76,6 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
         })
 
         function updateFrontmatter(file: string, isRemove = false) {
-          const frontmatter = getFrontMatter(file)
-
           const path = file.replace(new RegExp(`^${option.base}`), '').replace(/.mdx?$/, '')
 
           if (isRemove) {
@@ -88,6 +86,8 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
             console.log('remove frontmatter for', file)
             return
           }
+
+          const frontmatter = getFrontMatter(file)
 
           const item: PostItem = {
             path: path,
