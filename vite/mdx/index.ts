@@ -13,7 +13,7 @@ export function mdx(opt: Options = {}): Plugin {
 
   let isDev = false
   return {
-    name: '@mdx-js/rollup',
+    name: '@mdx-js/rollup-vue',
     config(_conf, env) {
       isDev = env.command === 'serve'
     },
@@ -24,20 +24,20 @@ export function mdx(opt: Options = {}): Plugin {
 
       if (!file) return
 
-      let lines = file.code.trim().split(/\n/g)
-      lines = lines.slice(0, -1)
+      const codes: string[] = []
 
       const devInfo = isDev ? `  __file: ${JSON.stringify(path)},` : ''
 
-      lines.push(`import { defineComponent } from 'vue'
+      codes.push(`import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: ${JSON.stringify(basename(path))},
-  ${devInfo}
-  setup: (props) => () => MDXContent(props),
-})
-`)
-      file.code = lines.join('\n')
+      export default defineComponent({
+        name: ${JSON.stringify(basename(path))},
+        ${devInfo}
+        setup: (props) => () => MDXContent(props),
+      })
+      `)
+
+      file.code = file.code.replace(/^export\s+default.+$/m, codes.join('\n'))
 
       return file
     },

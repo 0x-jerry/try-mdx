@@ -10,9 +10,10 @@ import IconsResolver from 'unplugin-icons/resolver'
 import jsx from '@vitejs/plugin-vue-jsx'
 import uno from 'unocss/vite'
 import i18n from '@intlify/unplugin-vue-i18n/vite'
+import inspect from 'vite-plugin-inspect'
 import { mdx } from './vite/mdx'
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
   return {
     resolve: {
       alias: {
@@ -61,6 +62,8 @@ export default defineConfig(() => {
       i18n({
         include: ['src/locales/*.yml'],
       }),
+
+      mode === 'inspect' && inspect(),
     ],
   }
 })
