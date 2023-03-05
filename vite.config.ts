@@ -12,6 +12,7 @@ import uno from 'unocss/vite'
 import i18n from '@intlify/unplugin-vue-i18n/vite'
 import inspect from 'vite-plugin-inspect'
 import { mdx } from './vite/mdx'
+import { site } from './vite/site'
 
 export default defineConfig(({ mode }) => {
   return {
@@ -47,21 +48,32 @@ export default defineConfig(({ mode }) => {
 
       // https://github.com/hannoeru/vite-plugin-pages
       pages({
-        exclude: ['**/components/*.vue', '**/*.ts'],
-        extensions: ['vue', 'mdx'],
+        dirs: [
+          'src/pages',
+          {
+            dir: 'docs',
+            baseRoute: '/',
+          },
+        ],
+        exclude: ['**/components/*'],
+        extensions: ['vue', 'mdx', 'md'],
       }),
 
       uno(),
 
-      mdx(),
+      mdx({
+        include: ['**/*.md', '**/*.mdx'],
+      }),
 
       jsx({
-        include: ['**/*.tsx', '**/*.jsx', '**/*.mdx'],
+        include: ['**/*.tsx', '**/*.jsx', '**/*.md', '**/*.mdx'],
       }),
 
       i18n({
         include: ['src/locales/*.yml'],
       }),
+
+      ...site(),
 
       mode === 'inspect' && inspect(),
     ],

@@ -5,9 +5,9 @@ const { sidebar, user } = site
 </script>
 
 <template>
-  <div class="flex flex-col gap-16px pt-24px">
+  <div class="flex flex-col gap-16px pt-5vh">
     <VLink to="/" class="flex justify-center">
-      <div class="rounded-full overflow-hidden h-200px">
+      <div class="rounded-full overflow-hidden h-180px">
         <img
           class="transition duration-1000 rotate-0 hover:rotate-360 w-full h-full object-cover aspect-1/1"
           :src="user.avatar"
@@ -26,7 +26,7 @@ const { sidebar, user } = site
         <component :is="item.icon"></component>
       </a>
     </div>
-    <div class="flex flex-col gap-16px">
+    <div class="flex flex-col gap-12px">
       <VLink class="block decoration-none" v-for="item in sidebar.menus" :to="item.href">
         <VButton class="w-full" :title="item.title">
           <component :is="item.icon"></component>

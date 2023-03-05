@@ -2,6 +2,7 @@ import mdxRaw from '@mdx-js/rollup'
 import type { Options } from '@mdx-js/rollup'
 import type { SourceDescription } from '@mdx-js/rollup/lib'
 import type { Plugin } from 'vite'
+import remarkFrontmatter from 'remark-frontmatter'
 import { basename } from 'path'
 
 export function mdx(opt: Options = {}): Plugin {
@@ -9,6 +10,7 @@ export function mdx(opt: Options = {}): Plugin {
     ...opt,
     jsx: true,
     outputFormat: 'program',
+    remarkPlugins: [remarkFrontmatter],
   })
 
   let isDev = false
