@@ -3,6 +3,7 @@ import type { Options } from '@mdx-js/rollup'
 import type { SourceDescription } from '@mdx-js/rollup/lib'
 import type { Plugin } from 'vite'
 import remarkFrontmatter from 'remark-frontmatter'
+
 import { basename } from 'path'
 
 export function mdx(opt: Options = {}): Plugin {
@@ -26,11 +27,43 @@ export function mdx(opt: Options = {}): Plugin {
 
       if (!file) return
 
-      const codes: string[] = []
+      fixVueRouter()
+      fixRelativeResource()
 
-      const devInfo = isDev ? `  __file: ${JSON.stringify(path)},` : ''
+      return file
 
-      codes.push(`import { defineComponent } from 'vue'
+      function fixRelativeResource() {
+        let idx = 0
+        const resourceMap: Record<string, string> = {}
+
+        // src="./docker-on-raspberrypi/2020-05-31T211438.png"
+        file.code = file.code.replace(/src="[^"]+"/g, (src) => {
+          const url = src.slice('src="'.length, -1)
+
+          if (!url.startsWith('.')) {
+            return src
+          }
+
+          let currentIdx = idx++
+          resourceMap[currentIdx] = url
+          return `src={__res${currentIdx}}`
+        })
+
+        const lines = Object.entries(resourceMap)
+          .map(([key, value]) => {
+            return `import __res${key} from ${JSON.stringify(value)}`
+          })
+          .join('\n')
+
+        file.code = [lines, file.code].join('\n')
+      }
+
+      function fixVueRouter() {
+        const codes: string[] = []
+
+        const devInfo = isDev ? `  __file: ${JSON.stringify(path)},` : ''
+
+        codes.push(`import { defineComponent } from 'vue'
 
       export default defineComponent({
         name: ${JSON.stringify(basename(path))},
@@ -39,9 +72,8 @@ export function mdx(opt: Options = {}): Plugin {
       })
       `)
 
-      file.code = file.code.replace(/^export\s+default.+$/m, codes.join('\n'))
-
-      return file
+        file.code = file.code.replace(/^export\s+default.+$/m, codes.join('\n'))
+      }
     },
   }
 }
