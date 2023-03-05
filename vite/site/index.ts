@@ -40,6 +40,7 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
       })
     }
 
+    config.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
     return config
   }
 
@@ -81,6 +82,8 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
 
           if (isRemove) {
             remove(siteConfig.posts, (t) => t.path === path)
+
+            siteConfig.posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
             updateVirtualModule(plugin, ID, siteConfig)
             console.log('remove frontmatter for', file)
             return
@@ -101,6 +104,7 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
             console.log('add frontmatter for', file)
           }
 
+          siteConfig.posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
           updateVirtualModule(plugin, ID, siteConfig)
         }
 
