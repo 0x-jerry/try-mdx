@@ -33,8 +33,6 @@ tags: [Blog, System Design]
 
 展示的效果如下：
 
-import VCount from './design-blog-system-4/VCount.vue'
-
 <VCount></VCount>
 
 ## 总结
@@ -45,3 +43,7 @@ import VCount from './design-blog-system-4/VCount.vue'
 [markdown-it]: https://github.com/markdown-it/markdown-it
 [marked]: https://github.com/markedjs/marked
 [vite-plugin-blog]: https://github.com/0x-jerry/vite-plugin-blog
+
+<script>
+  import VCount rom './design-blog-system-4/VCount.vue'
+</script>

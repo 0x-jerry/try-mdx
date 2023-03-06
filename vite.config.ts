@@ -7,11 +7,10 @@ import layouts from 'vite-plugin-vue-layouts'
 import pages from 'vite-plugin-pages'
 import icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
-import jsx from '@vitejs/plugin-vue-jsx'
 import uno from 'unocss/vite'
 import i18n from '@intlify/unplugin-vue-i18n/vite'
 import inspect from 'vite-plugin-inspect'
-import { mdx } from './vite/mdx'
+import md from 'vite-plugin-md'
 import { site } from './vite/site'
 
 export default defineConfig(({ mode }) => {
@@ -56,18 +55,12 @@ export default defineConfig(({ mode }) => {
           },
         ],
         exclude: ['**/components/*'],
-        extensions: ['vue', 'mdx', 'md'],
+        extensions: ['vue', 'md'],
       }),
 
       uno(),
 
-      mdx({
-        include: ['**/*.md', '**/*.mdx'],
-      }),
-
-      jsx({
-        include: ['**/*.tsx', '**/*.jsx', '**/*.md', '**/*.mdx'],
-      }),
+      md(),
 
       i18n({
         include: ['src/locales/*.yml'],
