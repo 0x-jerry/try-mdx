@@ -19,5 +19,5 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "vite"]
+  "include": ["src", "vite", "docs"]
 }

@@ -44,6 +44,6 @@ tags: [Blog, System Design]
 [marked]: https://github.com/markedjs/marked
 [vite-plugin-blog]: https://github.com/0x-jerry/vite-plugin-blog
 
-<script>
-  import VCount rom './design-blog-system-4/VCount.vue'
+<script setup>
+  import VCount from './design-blog-system-4/VCount.vue'
 </script>

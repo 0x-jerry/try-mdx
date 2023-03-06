@@ -22,7 +22,11 @@ export default defineConfig(({ mode }) => {
     },
 
     plugins: [
-      vue(),
+      md(),
+
+      vue({
+        include: [/\.vue/, /\.md/],
+      }),
 
       // https://github.com/antfu/unplugin-icons
       icons(),
@@ -59,8 +63,6 @@ export default defineConfig(({ mode }) => {
       }),
 
       uno(),
-
-      md(),
 
       i18n({
         include: ['src/locales/*.yml'],
