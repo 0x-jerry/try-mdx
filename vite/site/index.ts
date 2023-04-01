@@ -7,11 +7,12 @@ import matter from 'gray-matter'
 import { readFileSync } from 'fs'
 import { remove } from '@0x-jerry/utils'
 import type { PostItem, SiteConfig } from '@v-site'
+import { basename, join } from 'path'
 
 const { default: virtual, updateVirtualModule } = _virtual as any as typeof VirtualTypedef
 
 export interface SitePluginOption {
-  base?: string
+  routePrefix?: string
   include?: string[]
 }
 
@@ -20,8 +21,8 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
   const ID = '@v-site'
 
   const option: Required<SitePluginOption> = {
-    base: 'docs',
-    include: ['docs/posts/**/*.md', 'docs/posts/**/*.mdx'],
+    routePrefix: 'posts',
+    include: ['content/posts/**/*.md', 'content/posts/**/*.mdx'],
     ...opt,
   }
 
@@ -34,8 +35,10 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
     for (const file of files) {
       const frontmatter = getFrontMatter(file)
 
+      const name = basename(file).replace(/\.md$/, '')
+
       config.push({
-        path: file.replace(new RegExp(`^${option.base}`), '').replace(/.mdx?$/, ''),
+        path: join(option.routePrefix, name),
         data: frontmatter.data as any,
       })
     }
@@ -76,7 +79,7 @@ export function site(opt: SitePluginOption = {}): Plugin[] {
         })
 
         function updateFrontmatter(file: string, isRemove = false) {
-          const path = file.replace(new RegExp(`^${option.base}`), '').replace(/.mdx?$/, '')
+          const path = file.replace(new RegExp(`^${option.routePrefix}`), '').replace(/.mdx?$/, '')
 
           if (isRemove) {
             remove(siteConfig.posts, (t) => t.path === path)

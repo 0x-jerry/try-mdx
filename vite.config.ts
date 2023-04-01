@@ -67,7 +67,7 @@ export default defineConfig(({ mode }) => {
         dirs: [
           'src/pages',
           {
-            dir: 'docs',
+            dir: 'content',
             baseRoute: '/',
           },
         ],
