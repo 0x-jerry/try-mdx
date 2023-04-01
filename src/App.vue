@@ -5,6 +5,20 @@
 <style lang="less">
 html {
   @apply text-gray-7;
+  scroll-behavior: smooth;
+  overflow: overlay;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: rgba(194, 194, 194, 0.5);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, 0.9);
+  border-radius: 10px;
 }
 
 /* 霞鹜文楷 */

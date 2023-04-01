@@ -13,7 +13,8 @@ const post = computed(() => {
 <template>
   <div>
     <template v-if="post">
-      <v-page-title :title="post.title" show-back>
+      <v-page-title :title="post.title" show-back> </v-page-title>
+      <div class="relative -top-10px flex gap-1 mb-3">
         <v-tag class="tag">{{ dayjs(post.date).format('YYYY-MM-DD HH:mm') }}</v-tag>
         <v-tag
           class="tag"
@@ -27,7 +28,7 @@ const post = computed(() => {
             })
           "
         />
-      </v-page-title>
+      </div>
     </template>
     <RouterView></RouterView>
   </div>
