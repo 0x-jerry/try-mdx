@@ -66,6 +66,7 @@ export default defineConfig(({ mode }) => {
 
       i18n({
         include: ['src/locales/*.yml'],
+        strictMessage: false,
       }),
 
       ...site(),
