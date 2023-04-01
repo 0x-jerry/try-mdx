@@ -28,11 +28,13 @@ export interface UserConfig {
   nick: string
   avatar: string
   motto: string
+  email?: string
 }
 
 export const site: SiteConfig = {
   user: {
     nick: '0x-Jerry',
+    email: 'x.jerry.wang@gmail.com',
     avatar: 'https://avatars.githubusercontent.com/u/14226737?v=4',
     motto: `Life was like a box of chocolates. You never know what you're gonna get.`,
   },
