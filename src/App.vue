@@ -21,4 +21,20 @@ code {
 .markdown-body {
   font-family: LXGWWenKai, sans-serif;
 }
+
+body a {
+  appearance: none;
+  text-decoration: none;
+
+  @apply transition;
+  @apply text-blue-5;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  // &:visited {
+  //   color: default;
+  // }
+}
 </style>

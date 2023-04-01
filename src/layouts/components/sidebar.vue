@@ -27,12 +27,14 @@ const { sidebar, user } = site
       </a>
     </div>
     <div class="flex flex-col gap-12px">
-      <VLink class="block decoration-none" v-for="item in sidebar.menus" :to="item.href">
-        <VButton class="w-full" :title="item.title">
-          <component :is="item.icon"></component>
-          <span class="flex-1 text-center">{{ item.title }}</span>
-        </VButton>
-      </VLink>
+      <template v-for="item in sidebar.menus">
+        <VLink class="hover:decoration-none" :to="item.href">
+          <VButton class="w-full" :title="item.title">
+            <component :is="item.icon"></component>
+            <span class="flex-1 text-center">{{ item.title }}</span>
+          </VButton>
+        </VLink>
+      </template>
     </div>
   </div>
 </template>

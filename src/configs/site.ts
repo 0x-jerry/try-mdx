@@ -56,11 +56,6 @@ export const site: SiteConfig = {
         title: t('menu.title.tags'),
       },
       {
-        href: '/archives',
-        icon: IconArchive,
-        title: t('menu.title.archive'),
-      },
-      {
         href: '/about',
         icon: IconProfile,
         title: t('menu.title.about'),

@@ -17,13 +17,6 @@ const props = defineProps<PostItemLinkProps>()
 
       <VLink :to="path"> {{ data.title }}</VLink>
     </div>
-    <!-- {props.data.tags?.length && (
-        <div class='flex(& wrap) gap-2 items-center border(b solid gray-100) pb-4 mb-2 md:(p-0 m-0 border-none) '>
-          {props.data.tags.map((tag) => (
-            <Tag href={`/tags/${tag}`}>{tag}</Tag>
-          ))}
-        </div>
-      )} -->
   </div>
 </template>
 

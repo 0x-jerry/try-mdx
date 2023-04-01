@@ -32,15 +32,24 @@ const posts = computed(() => {
 <template>
   <div>
     <div class="flex-(~ wrap) gap-2 justify-center">
-      <v-tag v-for="tag in Object.keys(tags)" @click="$router.push({ query: { tag } })" :name="tag">
+      <v-tag
+        v-for="tag in Object.keys(tags)"
+        @click="$router.push({ query: { tag } })"
+        :name="tag"
+        clickable
+      >
       </v-tag>
     </div>
-    <div class="text-center my-40px">
-      <v-tag class="text-2xl font-bold" :name="selectedTag"></v-tag>
-    </div>
-    <div class="flex-(~ col) gap-2">
-      <PostItemLink v-for="item in posts" v-bind="item"></PostItemLink>
-    </div>
+    <template v-if="selectedTag">
+      <div class="text-center my-40px">
+        <v-tag class="text-2xl font-bold" :name="selectedTag">
+          {{ selectedTag }} ({{ posts.length }})
+        </v-tag>
+      </div>
+      <div class="flex-(~ col) gap-2">
+        <PostItemLink v-for="item in posts" v-bind="item"></PostItemLink>
+      </div>
+    </template>
   </div>
 </template>
 
