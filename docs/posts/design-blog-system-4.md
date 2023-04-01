@@ -27,7 +27,7 @@ tags: [Blog, System Design]
 
 例如：
 
-```md
+```html
 <v-count />
 ```
 

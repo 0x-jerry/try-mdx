@@ -11,6 +11,8 @@ import uno from 'unocss/vite'
 import i18n from '@intlify/unplugin-vue-i18n/vite'
 import inspect from 'vite-plugin-inspect'
 import md from 'vite-plugin-md'
+import { link, meta } from 'md-powerpack'
+import shiki, { Options } from 'markdown-it-shiki'
 import { site } from './vite/site'
 
 export default defineConfig(({ mode }) => {
@@ -22,7 +24,18 @@ export default defineConfig(({ mode }) => {
     },
 
     plugins: [
-      md(),
+      md({
+        markdownItUses: [
+          [
+            shiki,
+            {
+              highlightLines: true,
+              theme: 'solarized-light',
+            } satisfies Options,
+          ],
+        ],
+        builders: [link(), meta()],
+      }),
 
       vue({
         include: [/\.vue/, /\.md/],
