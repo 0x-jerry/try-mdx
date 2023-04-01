@@ -1,5 +1,5 @@
-import { RenderRule } from 'markdown-it/lib/renderer'
-import Token from 'markdown-it/lib/token'
+import type { RenderRule } from 'markdown-it/lib/renderer'
+import type Token from 'markdown-it/lib/token'
 
 export function renderToken(
   defaultRenderer?: RenderRule,

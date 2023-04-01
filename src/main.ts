@@ -1,5 +1,5 @@
 import App from './App.vue'
-import { createApp, Plugin } from 'vue'
+import { createApp, type Plugin } from 'vue'
 
 import 'normalize.css'
 import 'uno.css'

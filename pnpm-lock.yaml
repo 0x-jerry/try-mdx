@@ -45,6 +45,9 @@ devDependencies:
   '@vue/runtime-core':
     specifier: ^3.2.47
     version: 3.2.47
+  '@vue/tsconfig':
+    specifier: ^0.1.3
+    version: 0.1.3(@types/node@18.15.11)
   chokidar:
     specifier: ^3.5.3
     version: 3.5.3
@@ -1173,6 +1176,17 @@ packages:
 
   /@vue/shared@3.2.47:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
+
+  /@vue/tsconfig@0.1.3(@types/node@18.15.11):
+    resolution: {integrity: sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      '@types/node': 18.15.11
+    dev: true
 
   /@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.1.0)(less@4.1.3)(vite@4.2.1):
     resolution: {integrity: sha512-qc6HyfqtuS06FvA5rK0L62Nmc1LnarVOt8/V/mTX2DBZlpTfIDpudpbE/7/kxjme9pP4PFMCk7cPSrprLEorjw==}

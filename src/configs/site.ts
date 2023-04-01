@@ -1,5 +1,5 @@
 import { t } from '@/modules/i18n'
-import { Component } from 'vue'
+import type { Component } from 'vue'
 import IconHome from '~icons/carbon/home'
 import IconTag from '~icons/carbon/tag'
 import IconArchive from '~icons/carbon/archive'

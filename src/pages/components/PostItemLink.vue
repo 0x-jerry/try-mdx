@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import { PostMatter } from '@v-site'
+import type { PostMatter } from '@v-site'
 
 interface PostItemLinkProps {
   path: string

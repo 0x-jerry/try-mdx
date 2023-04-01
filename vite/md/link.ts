@@ -1,5 +1,5 @@
-import { PluginSimple } from 'markdown-it'
-import Token from 'markdown-it/lib/token'
+import type { PluginSimple } from 'markdown-it'
+import type Token from 'markdown-it/lib/token'
 import { renderToken } from './utils'
 
 export const link: PluginSimple = (md) => {

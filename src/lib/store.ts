@@ -1,4 +1,4 @@
-import { InjectionKey, UnwrapNestedRefs } from 'vue'
+import type { InjectionKey, UnwrapNestedRefs } from 'vue'
 
 interface Action<S> {
   [key: string]: (store: UnwrapNestedRefs<S>, ...args: any[]) => any
@@ -18,7 +18,7 @@ interface StoreStatus<S, A extends Action<S>> {
 export function createStore<S extends {}, A extends Action<S>>(
   store: () => S,
   actions: A,
-  symbolName?: string
+  symbolName?: string,
 ) {
   type Status = StoreStatus<S, A>
 

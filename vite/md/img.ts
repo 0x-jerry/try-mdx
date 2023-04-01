@@ -1,4 +1,4 @@
-import { PluginSimple } from 'markdown-it'
+import type { PluginSimple } from 'markdown-it'
 import { renderToken } from './utils'
 
 export const lazyImg: PluginSimple = (md) => {
