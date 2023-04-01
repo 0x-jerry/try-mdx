@@ -20,6 +20,19 @@ code {
 
 .markdown-body {
   font-family: LXGWWenKai, sans-serif;
+
+  pre code {
+    position: relative;
+    display: inline-block;
+
+    .line.highlighted {
+      background: #d8d8d87a;
+      width: calc(100% + 16px * 2);
+      position: relative;
+      left: -16px;
+      display: block;
+    }
+  }
 }
 
 body a {

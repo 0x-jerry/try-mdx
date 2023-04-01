@@ -13,6 +13,7 @@ import inspect from 'vite-plugin-inspect'
 import md from 'vite-plugin-md'
 import { site } from './vite/site'
 import { plugins } from './vite/md'
+import shiki, { type Options as ShikiOption } from 'markdown-it-shiki'
 
 export default defineConfig(({ mode }) => {
   return {
@@ -24,7 +25,16 @@ export default defineConfig(({ mode }) => {
 
     plugins: [
       md({
-        markdownItUses: [...plugins],
+        markdownItUses: [
+          ...plugins,
+          [
+            shiki,
+            {
+              theme: 'solarized-light',
+              highlightLines: true,
+            } satisfies ShikiOption,
+          ],
+        ],
       }),
 
       vue({

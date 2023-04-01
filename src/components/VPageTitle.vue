@@ -1,8 +1,12 @@
 <script lang="ts" setup>
-defineProps<{
+import { useHead } from '@vueuse/head'
+
+const props = defineProps<{
   title: string
   showBack?: boolean
 }>()
+
+useHead({ title: computed(() => props.title) })
 </script>
 
 <template>
