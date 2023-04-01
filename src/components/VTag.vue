@@ -1,22 +1,13 @@
 <script lang="ts" setup>
-import type { Component } from 'vue'
-import TypeScript from '~icons/vscode-icons/file-type-typescript'
-
-const props = defineProps<{
+defineProps<{
   name?: string
 }>()
-
-const map: Record<string, Component> = {
-  typescript: TypeScript,
-}
-
-const icon = computed(() => props.name && map[props.name.toLocaleLowerCase()])
 </script>
 
 <template>
   <span class="v-tag">
-    <component v-if="name && icon" :is="icon"></component>
-    <slot v-else>
+    <v-tag-icon class="mr-2 icon" :name="name"></v-tag-icon>
+    <slot>
       {{ name }}
     </slot>
   </span>
@@ -28,8 +19,12 @@ const icon = computed(() => props.name && map[props.name.toLocaleLowerCase()])
   border: 1px solid #eee;
   border-radius: 4px;
   cursor: pointer;
-  font-size: small;
 
   display: inline-flex;
+  align-items: center;
+
+  .icon {
+    font-size: 0.75em;
+  }
 }
 </style>

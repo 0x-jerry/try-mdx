@@ -1,7 +1,7 @@
 ---
 title: Node 项目配置最佳实践
 date: 2018-04-03T05:13:42.000Z
-tags: [Nodejs, JavaScript]
+tags: [NodeJS, JavaScript]
 license: CC BY-NC 4.0
 ---
 
@@ -17,19 +17,19 @@ doSomething(config.someConfig)
 
 <!-- more -->
 
-就会出现很长的路径名。如果移动一下文件，那么就会涉及到 __多个__ 文件的更改，而且每次引入 `config`，都会出现这么长的路径，比较容易出错。那么有没有一种优雅的方式来引入项目的 `config` 文件呢？
+就会出现很长的路径名。如果移动一下文件，那么就会涉及到 **多个** 文件的更改，而且每次引入 `config`，都会出现这么长的路径，比较容易出错。那么有没有一种优雅的方式来引入项目的 `config` 文件呢？
 
 ## 优雅的引入 `config`
 
-之前查看 `npm` 的一些问题的时候，偶然看到过，可以把本地文件夹当成 `package` 使用，如果可以这样的话，引入 `config` 就像这样 
- 
+之前查看 `npm` 的一些问题的时候，偶然看到过，可以把本地文件夹当成 `package` 使用，如果可以这样的话，引入 `config` 就像这样
+
 ```js
 const config = require('config')
 ```
 
 这样就很简单了，完全不需要知道 `config` 文件存放在哪个地方，只需要用就可以了。
 
-__怎么能够实现这样呢？__
+**怎么能够实现这样呢？**
 
 创建一个项目，目录类似下面这样
 
@@ -47,9 +47,9 @@ package.json
 
 ```js
 module.exports = {
-  A:1,
-  B:2,
-  C:3,
+  A: 1,
+  B: 2,
+  C: 3,
 }
 ```
 
@@ -59,15 +59,15 @@ module.exports = {
 {
   "name": "config",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.js"
 }
 ```
 
 ### 安装 `config`
 
-然后在 `root` 目录下运行 `yarn add file:./config/`， __注意最后有 `/`__
+然后在 `root` 目录下运行 `yarn add file:./config/`， **注意最后有 `/`**
 
-在 `/package.json` 就会出现 `config` ，只不过对应的是 __文件__，而不是 __版本号__ 或者 __标签__
+在 `/package.json` 就会出现 `config` ，只不过对应的是 **文件**，而不是 **版本号** 或者 **标签**
 
 ```json
 {
@@ -96,5 +96,3 @@ console.log(config.C)           \\3
 虽然这样可以更好的引入 `config` ，但也会出现不方便的时候，如果 `config` 文件频繁更改，那么每次更改都需要更新 `package`
 
 不过既然是配置文件，那么我想更新频率应该不会很好，不过也看具体的使用情况。
-
-

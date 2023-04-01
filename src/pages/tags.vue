@@ -22,10 +22,10 @@ const tags = computed(() => {
   return _tags
 })
 
-const posts = computed(() => {
-  const t = route.query.tag as string
+const selectedTag = computed(() => route.query.tag as string)
 
-  return tags.value[t] || []
+const posts = computed(() => {
+  return tags.value[selectedTag.value] || []
 })
 </script>
 
@@ -36,9 +36,7 @@ const posts = computed(() => {
       </v-tag>
     </div>
     <div class="text-center my-40px">
-      <span class="text-2xl font-bold">
-        {{ $route.query.tag }}
-      </span>
+      <v-tag class="text-2xl font-bold" :name="selectedTag"></v-tag>
     </div>
     <div class="flex-(~ col) gap-2">
       <PostItemLink v-for="item in posts" v-bind="item"></PostItemLink>
