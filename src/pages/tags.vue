@@ -31,6 +31,7 @@ const posts = computed(() => {
 
 <template>
   <div>
+    <v-page-title :title="$t('title.tags')"></v-page-title>
     <div class="flex-(~ wrap) gap-2 justify-center">
       <v-tag
         v-for="tag in Object.keys(tags)"
@@ -42,7 +43,7 @@ const posts = computed(() => {
     </div>
     <template v-if="selectedTag">
       <div class="text-center my-40px">
-        <v-tag class="text-2xl font-bold" :name="selectedTag">
+        <v-tag class="text-2xl font-bold border-none!" :name="selectedTag">
           {{ selectedTag }} ({{ posts.length }})
         </v-tag>
       </div>

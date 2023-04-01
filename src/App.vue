@@ -4,7 +4,7 @@
 
 <style lang="less">
 html {
-  color: #333;
+  @apply text-gray-7;
 }
 
 /* 霞鹜文楷 */
@@ -32,9 +32,10 @@ body a {
   &:hover {
     text-decoration: underline;
   }
+}
 
-  // &:visited {
-  //   color: default;
-  // }
+hr {
+  border: 0 solid #e5e7eb;
+  border-top-width: 1px;
 }
 </style>

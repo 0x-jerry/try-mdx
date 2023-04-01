@@ -23,7 +23,7 @@ defineProps<{
   display: inline-flex;
   align-items: center;
 
-  @apply transition;
+  @apply transition font-mono;
 
   .icon {
     font-size: 0.75em;
