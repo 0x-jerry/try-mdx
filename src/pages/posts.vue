@@ -13,9 +13,7 @@ const postItem = computed(() => {
 <template>
   <div>
     <!-- <div>{{ postItem }}</div> -->
-    <div class="markdown-body">
-      <RouterView></RouterView>
-    </div>
+    <RouterView></RouterView>
   </div>
 </template>
 
